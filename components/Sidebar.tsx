@@ -25,8 +25,8 @@ interface SidebarProps {
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ role, onLogout, isOpen, toggleSidebar }) => {
-  // Increased width from w-64 to w-80
-  const baseClasses = `fixed left-0 top-0 h-full bg-white border-r border-gray-200 w-80 transform transition-transform duration-300 z-50 ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:static`;
+  // Decreased width from w-80 to w-72
+  const baseClasses = `fixed left-0 top-0 h-full bg-white border-r border-gray-200 w-72 transform transition-transform duration-300 z-50 ${isOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:static`;
 
   const getLinks = () => {
     switch (role) {
@@ -63,47 +63,47 @@ const Sidebar: React.FC<SidebarProps> = ({ role, onLogout, isOpen, toggleSidebar
 
   return (
     <aside className={baseClasses}>
-      <div className="h-20 flex items-center justify-between px-8 border-b border-gray-200">
+      <div className="h-16 flex items-center justify-between px-6 border-b border-gray-200">
         <div className="flex items-center">
-            <Dumbbell className="w-10 h-10 text-primary mr-3" />
-            <span className="text-2xl font-black text-gray-800 tracking-tight">GymPro</span>
+            <Dumbbell className="w-8 h-8 text-primary mr-2" />
+            <span className="text-xl font-black text-gray-800 tracking-tight">GymPro</span>
         </div>
         <button 
           onClick={toggleSidebar}
-          className="lg:hidden p-2 -mr-2 text-gray-500 hover:bg-gray-100 rounded-md"
+          className="lg:hidden p-1.5 text-gray-500 hover:bg-gray-100 rounded-md"
         >
-          <X className="w-8 h-8" />
+          <X className="w-6 h-6" />
         </button>
       </div>
 
-      <nav className="p-6 space-y-2 overflow-y-auto h-[calc(100%-5rem)] flex flex-col justify-between">
-        <ul className="space-y-2">
+      <nav className="p-4 space-y-1.5 overflow-y-auto h-[calc(100%-4rem)] flex flex-col justify-between">
+        <ul className="space-y-1">
           {links.map((link) => (
             <li key={link.to}>
               <NavLink
                 to={link.to}
                 end={link.to !== '/'} 
                 className={({ isActive }) =>
-                  `flex items-center gap-4 px-5 py-4 rounded-xl text-lg font-bold transition-all ${
+                  `flex items-center gap-3 px-4 py-3 rounded-xl text-base font-bold transition-all ${
                     isActive
                       ? 'bg-blue-50 text-primary shadow-sm'
                       : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`
                 }
               >
-                <link.icon className="w-6 h-6" />
+                <link.icon className="w-5 h-5" />
                 {link.label}
               </NavLink>
             </li>
           ))}
         </ul>
 
-        <div className="pt-6 border-t border-gray-200">
+        <div className="pt-4 border-t border-gray-200">
            <button 
              onClick={onLogout}
-             className="w-full flex items-center gap-4 px-5 py-4 rounded-xl text-lg font-bold text-danger hover:bg-red-50 transition-colors"
+             className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-base font-bold text-danger hover:bg-red-50 transition-colors"
            >
-             <LogOut className="w-6 h-6" />
+             <LogOut className="w-5 h-5" />
              Logout
            </button>
         </div>

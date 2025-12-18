@@ -2,7 +2,7 @@ import React from 'react';
 
 // --- Card Component ---
 export const Card: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
-  <div className={`bg-white rounded-2xl shadow-md border border-gray-100 p-8 md:p-10 ${className}`}>
+  <div className={`bg-white rounded-2xl shadow-md border border-gray-100 p-6 md:p-8 ${className}`}>
     {children}
   </div>
 );
@@ -13,7 +13,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export const Button: React.FC<ButtonProps> = ({ children, variant = 'primary', className = '', ...props }) => {
-  const baseStyles = "px-6 py-3 rounded-xl font-bold transition-all duration-200 flex items-center justify-center gap-3 text-lg active:scale-95 shadow-sm";
+  const baseStyles = "px-5 py-2.5 rounded-xl font-bold transition-all duration-200 flex items-center justify-center gap-2.5 text-base active:scale-95 shadow-sm";
   const variants = {
     primary: "bg-primary text-white hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-200",
     secondary: "bg-gray-100 text-gray-700 hover:bg-gray-200",
@@ -46,7 +46,7 @@ export const Badge: React.FC<{ status: string }> = ({ status }) => {
   }
 
   return (
-    <span className={`px-4 py-1.5 rounded-full text-sm font-bold tracking-wide ${colorClass}`}>
+    <span className={`px-3 py-1 rounded-full text-xs font-bold tracking-wide ${colorClass}`}>
       {status}
     </span>
   );
