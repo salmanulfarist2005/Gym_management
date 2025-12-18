@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, Plus, Filter, MoreVertical, FileDown } from 'lucide-react';
-import { Card, Badge, Button } from '../components/UI';
-import { MOCK_MEMBERS } from '../constants';
-import { Member } from '../types';
+import { Card, Badge, Button } from '../components/UI.tsx';
+import { MOCK_MEMBERS } from '../constants.ts';
+import { Member } from '../types.ts';
 
 const MembersList: React.FC = () => {
   const navigate = useNavigate();

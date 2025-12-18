@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Dumbbell, ArrowRight } from 'lucide-react';
-import { UserRole } from '../types';
+import { UserRole } from '../types.ts';
 
 interface LoginProps {
   onLogin: (role: UserRole) => void;

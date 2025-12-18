@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Plus, Search, MapPin, MoreVertical, Edit2, Trash2, Eye } from 'lucide-react';
-import { Card, Badge, Button } from '../components/UI';
-import { MOCK_GYMS } from '../constants';
+import { Card, Badge, Button } from '../components/UI.tsx';
+import { MOCK_GYMS } from '../constants.ts';
 
 const GymsList: React.FC = () => {
   const navigate = useNavigate();

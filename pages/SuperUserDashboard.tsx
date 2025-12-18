@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, Badge, Button } from '../components/UI';
-import { MOCK_GYMS } from '../constants';
+import { Card, Badge, Button } from '../components/UI.tsx';
+import { MOCK_GYMS } from '../constants.ts';
 import { Building, Users, TrendingUp, MoreVertical, Plus } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 

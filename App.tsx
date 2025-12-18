@@ -29,9 +29,8 @@ const ProtectedRoute: React.FC<{
         return <Navigate to="/login" replace />;
     }
     if (currentRole !== allowedRole) {
-        if (currentRole === 'superuser') return <Navigate to="/superuser" replace />;
-        if (currentRole === 'admin') return <Navigate to="/admin" replace />;
-        return <Navigate to="/member" replace />;
+        // Redirect to the correct dashboard based on actual role
+        return <Navigate to={`/${currentRole}`} replace />;
     }
     return <>{children}</>;
 };
@@ -61,11 +60,11 @@ const Layout: React.FC<{ role: UserRole; onLogout: () => void; children: React.R
             />
 
             <div className="flex-1 flex flex-col overflow-hidden">
-                <header className="lg:hidden flex items-center justify-between p-4 bg-white border-b border-gray-200">
+                <header className="lg:hidden flex items-center justify-between p-4 bg-white border-b border-gray-200 shadow-sm">
                     <button onClick={() => setSidebarOpen(true)} className="p-2 rounded-md hover:bg-gray-100">
                         <Menu className="w-6 h-6 text-gray-600" />
                     </button>
-                    <span className="font-bold text-gray-800">GymPro</span>
+                    <span className="font-bold text-gray-800 tracking-tight">GymPro Nexus</span>
                     <div className="w-10" />
                 </header>
 
@@ -106,11 +105,13 @@ const App: React.FC = () => {
   return (
     <HashRouter>
       <Routes>
+        {/* Auth Route */}
         <Route 
             path="/login" 
             element={userRole ? <Navigate to={`/${userRole}`} replace /> : <Login onLogin={handleLogin} />} 
         />
 
+        {/* SuperUser Routes */}
         <Route
           path="/superuser/*"
           element={
@@ -131,6 +132,7 @@ const App: React.FC = () => {
           }
         />
 
+        {/* Admin Routes */}
         <Route
           path="/admin/*"
           element={
@@ -155,6 +157,7 @@ const App: React.FC = () => {
           }
         />
 
+        {/* Member Routes */}
         <Route
           path="/member/*"
           element={
@@ -171,7 +174,9 @@ const App: React.FC = () => {
           }
         />
 
-        <Route path="/" element={<Navigate to="/login" replace />} />
+        {/* Catch-all Redirect */}
+        <Route path="/" element={userRole ? <Navigate to={`/${userRole}`} replace /> : <Navigate to="/login" replace />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </HashRouter>
   );
