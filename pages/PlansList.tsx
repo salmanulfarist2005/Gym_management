@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Plus, Edit2, Trash2, CheckCircle, XCircle } from 'lucide-react';
-import { Card, Button } from '../components/UI';
-import { MOCK_PLANS } from '../constants';
+import { Card, Button } from '../components/UI.tsx';
+import { MOCK_PLANS } from '../constants.ts';
 
 const PlansList: React.FC = () => {
   const navigate = useNavigate();

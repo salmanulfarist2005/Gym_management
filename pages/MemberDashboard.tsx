@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, Badge, Button } from '../components/UI';
-import { MOCK_CHECKINS } from '../constants';
+import { Card, Badge, Button } from '../components/UI.tsx';
+import { MOCK_CHECKINS } from '../constants.ts';
 import { Calendar, Clock, Award, ChevronRight, QrCode } from 'lucide-react';
 
 const MemberDashboard: React.FC = () => {

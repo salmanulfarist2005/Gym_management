@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, Plus, Filter, MoreVertical, CreditCard } from 'lucide-react';
-import { Card, Badge, Button } from '../components/UI';
-import { MOCK_MEMBERSHIPS } from '../constants';
+import { Card, Badge, Button } from '../components/UI.tsx';
+import { MOCK_MEMBERSHIPS } from '../constants.ts';
 
 const MembershipsList: React.FC = () => {
   const navigate = useNavigate();

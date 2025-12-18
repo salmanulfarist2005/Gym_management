@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Save, User } from 'lucide-react';
-import { Card, Button } from '../components/UI';
+import { Card, Button } from '../components/UI.tsx';
 
 const AddMember: React.FC = () => {
   const navigate = useNavigate();
