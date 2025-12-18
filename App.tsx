@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import Sidebar from './components/Sidebar';
-import Login from './pages/Login';
-import SuperUserDashboard from './pages/SuperUserDashboard';
-import GymsList from './pages/GymsList';
-import CreateGym from './pages/CreateGym';
-import AdminsList from './pages/AdminsList';
-import CreateAdmin from './pages/CreateAdmin';
-import AdminDashboard from './pages/AdminDashboard';
-import MemberDashboard from './pages/MemberDashboard';
-import MembersList from './pages/MembersList';
-import AddMember from './pages/AddMember';
-import PlansList from './pages/PlansList';
-import AddPlan from './pages/AddPlan';
-import MembershipsList from './pages/MembershipsList';
-import AddMembership from './pages/AddMembership';
-import PaymentsList from './pages/PaymentsList';
-import AddPayment from './pages/AddPayment';
-import { UserRole } from './types';
+import Sidebar from './components/Sidebar.tsx';
+import Login from './pages/Login.tsx';
+import SuperUserDashboard from './pages/SuperUserDashboard.tsx';
+import GymsList from './pages/GymsList.tsx';
+import CreateGym from './pages/CreateGym.tsx';
+import AdminsList from './pages/AdminsList.tsx';
+import CreateAdmin from './pages/CreateAdmin.tsx';
+import AdminDashboard from './pages/AdminDashboard.tsx';
+import MemberDashboard from './pages/MemberDashboard.tsx';
+import MembersList from './pages/MembersList.tsx';
+import AddMember from './pages/AddMember.tsx';
+import PlansList from './pages/PlansList.tsx';
+import AddPlan from './pages/AddPlan.tsx';
+import MembershipsList from './pages/MembershipsList.tsx';
+import AddMembership from './pages/AddMembership.tsx';
+import PaymentsList from './pages/PaymentsList.tsx';
+import AddPayment from './pages/AddPayment.tsx';
+import { UserRole } from './types.ts';
 import { Menu, Construction } from 'lucide-react';
 
 const ProtectedRoute: React.FC<{ 
@@ -29,7 +29,6 @@ const ProtectedRoute: React.FC<{
         return <Navigate to="/login" replace />;
     }
     if (currentRole !== allowedRole) {
-        // Redirect to appropriate dashboard if role mismatch
         if (currentRole === 'superuser') return <Navigate to="/superuser" replace />;
         if (currentRole === 'admin') return <Navigate to="/admin" replace />;
         return <Navigate to="/member" replace />;
@@ -41,14 +40,12 @@ const Layout: React.FC<{ role: UserRole; onLogout: () => void; children: React.R
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const location = useLocation();
 
-    // Close sidebar on route change (mobile)
     React.useEffect(() => {
         setSidebarOpen(false);
     }, [location]);
 
     return (
         <div className="flex h-screen bg-gray-50">
-            {/* Mobile Sidebar Overlay */}
             {sidebarOpen && (
                 <div 
                     className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
@@ -64,13 +61,12 @@ const Layout: React.FC<{ role: UserRole; onLogout: () => void; children: React.R
             />
 
             <div className="flex-1 flex flex-col overflow-hidden">
-                {/* Mobile Header */}
                 <header className="lg:hidden flex items-center justify-between p-4 bg-white border-b border-gray-200">
                     <button onClick={() => setSidebarOpen(true)} className="p-2 rounded-md hover:bg-gray-100">
                         <Menu className="w-6 h-6 text-gray-600" />
                     </button>
                     <span className="font-bold text-gray-800">GymPro</span>
-                    <div className="w-10" /> {/* Spacer */}
+                    <div className="w-10" />
                 </header>
 
                 <main className="flex-1 overflow-x-hidden overflow-y-auto p-4 md:p-6 lg:p-8">

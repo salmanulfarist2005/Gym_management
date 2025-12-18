@@ -1,4 +1,4 @@
-import { Gym, Member, CheckIn, StatsData, Plan, Membership, Payment } from './types';
+import { Gym, Member, CheckIn, StatsData, Plan, Membership, Payment } from './types.ts';
 
 export const MOCK_GYMS: Gym[] = [
   { id: 'GYM-001', name: 'Iron Paradise', location: 'New York, NY', status: 'Active', membersCount: 1450, revenue: 58000, ownerName: 'Dwayne J.' },
