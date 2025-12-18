@@ -58,8 +58,12 @@ const PlansList: React.FC = () => {
                     {plan.description || '-'}
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <button className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-full transition-colors" title="Edit Plan">
+                    <div className="flex items-center justify-end gap-2">
+                      <button 
+                        className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-full transition-colors" 
+                        title="Edit Plan"
+                        onClick={() => navigate(`/admin/plans/edit/${plan.id}`)}
+                      >
                         <Edit2 className="w-4 h-4" />
                       </button>
                       <button className="p-2 text-gray-400 hover:text-danger hover:bg-red-50 rounded-full transition-colors" title="Delete Plan">

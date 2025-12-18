@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Plus, Filter, MoreVertical, CreditCard } from 'lucide-react';
+import { Search, Plus, Filter, Edit2, Trash2, CreditCard } from 'lucide-react';
 import { Card, Badge, Button } from '../components/UI.tsx';
 import { MOCK_MEMBERSHIPS } from '../constants.ts';
 
@@ -81,9 +81,18 @@ const MembershipsList: React.FC = () => {
                     <Badge status={sub.status} />
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <button className="text-gray-400 hover:text-gray-600">
-                        <MoreVertical className="w-4 h-4" />
-                    </button>
+                    <div className="flex items-center justify-end gap-1">
+                      <button 
+                        className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-lg transition-all" 
+                        title="Edit Membership"
+                        onClick={() => navigate(`/admin/memberships/edit/${sub.id}`)}
+                      >
+                        <Edit2 className="w-4 h-4" />
+                      </button>
+                      <button className="p-2 text-gray-400 hover:text-danger hover:bg-red-50 rounded-lg transition-all" title="Delete Membership">
+                        <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

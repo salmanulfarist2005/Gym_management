@@ -1,10 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, Badge, Button } from '../components/UI.tsx';
 import { MOCK_GYMS } from '../constants.ts';
-import { Building, Users, TrendingUp, MoreVertical, Plus } from 'lucide-react';
+import { Building, Users, TrendingUp, Edit2, Trash2, Plus } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const SuperUserDashboard: React.FC = () => {
+  const navigate = useNavigate();
   const chartData = MOCK_GYMS.map(gym => ({
     name: gym.name,
     members: gym.membersCount,
@@ -15,7 +17,7 @@ const SuperUserDashboard: React.FC = () => {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl font-bold text-gray-900">System Overview</h1>
-        <Button>
+        <Button onClick={() => navigate('/superuser/gyms/create')}>
             <Plus className="w-4 h-4" />
             Create Gym
         </Button>
@@ -98,12 +100,12 @@ const SuperUserDashboard: React.FC = () => {
                         <th className="px-6 py-4">Owner</th>
                         <th className="px-6 py-4">Members</th>
                         <th className="px-6 py-4">Status</th>
-                        <th className="px-6 py-4">Actions</th>
+                        <th className="px-6 py-4 text-right">Actions</th>
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                     {MOCK_GYMS.map((gym) => (
-                        <tr key={gym.id} className="hover:bg-gray-50">
+                        <tr key={gym.id} className="hover:bg-gray-50 group">
                             <td className="px-6 py-4 font-medium text-gray-900">{gym.name}</td>
                             <td className="px-6 py-4">{gym.location}</td>
                             <td className="px-6 py-4">{gym.ownerName}</td>
@@ -111,10 +113,19 @@ const SuperUserDashboard: React.FC = () => {
                             <td className="px-6 py-4">
                                 <Badge status={gym.status} />
                             </td>
-                            <td className="px-6 py-4">
-                                <button className="text-gray-400 hover:text-primary">
-                                    <MoreVertical className="w-5 h-5" />
-                                </button>
+                            <td className="px-6 py-4 text-right">
+                                <div className="flex items-center justify-end gap-1">
+                                    <button 
+                                        className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-lg transition-all" 
+                                        title="Edit"
+                                        onClick={() => navigate(`/superuser/gyms/edit/${gym.id}`)}
+                                    >
+                                        <Edit2 className="w-4 h-4" />
+                                    </button>
+                                    <button className="p-2 text-gray-400 hover:text-danger hover:bg-red-50 rounded-lg transition-all" title="Delete">
+                                        <Trash2 className="w-4 h-4" />
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     ))}

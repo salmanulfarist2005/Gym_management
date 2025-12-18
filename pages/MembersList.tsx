@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Plus, Filter, MoreVertical, FileDown } from 'lucide-react';
+import { Search, Plus, Filter, Edit2, Trash2, FileDown, Eye } from 'lucide-react';
 import { Card, Badge, Button } from '../components/UI.tsx';
 import { MOCK_MEMBERS } from '../constants.ts';
 import { Member } from '../types.ts';
@@ -84,7 +84,7 @@ const MembersList: React.FC = () => {
                 <th className="px-6 py-3">Current Plan</th>
                 <th className="px-6 py-3">Status</th>
                 <th className="px-6 py-3">Expiry Date</th>
-                <th className="px-6 py-3">Actions</th>
+                <th className="px-6 py-3 text-right">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
@@ -106,11 +106,20 @@ const MembersList: React.FC = () => {
                       <Badge status={member.status} />
                     </td>
                     <td className="px-6 py-3 text-gray-600">{member.expiryDate}</td>
-                    <td className="px-6 py-3">
-                      <div className="flex items-center gap-2">
-                        <button className="text-primary hover:underline font-medium text-xs">View</button>
-                        <button className="text-gray-400 hover:text-gray-600">
-                           <MoreVertical className="w-4 h-4" />
+                    <td className="px-6 py-3 text-right">
+                      <div className="flex items-center justify-end gap-1">
+                        <button className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-lg transition-all" title="View Profile">
+                          <Eye className="w-4 h-4" />
+                        </button>
+                        <button 
+                          className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-lg transition-all" 
+                          title="Edit Member"
+                          onClick={() => navigate(`/admin/members/edit/${member.id}`)}
+                        >
+                          <Edit2 className="w-4 h-4" />
+                        </button>
+                        <button className="p-2 text-gray-400 hover:text-danger hover:bg-red-50 rounded-lg transition-all" title="Delete Member">
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </td>

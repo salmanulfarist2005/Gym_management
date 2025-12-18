@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Plus, Filter, MoreVertical, FileText, Download } from 'lucide-react';
+import { Search, Plus, Filter, Edit2, Trash2, FileText, Download } from 'lucide-react';
 import { Card, Badge, Button } from '../components/UI.tsx';
 import { MOCK_PAYMENTS } from '../constants.ts';
 
@@ -74,7 +74,7 @@ const PaymentsList: React.FC = () => {
             </thead>
             <tbody className="divide-y divide-gray-100">
               {filteredPayments.map((payment) => (
-                <tr key={payment.id} className="hover:bg-gray-50">
+                <tr key={payment.id} className="hover:bg-gray-50 group">
                   <td className="px-6 py-4 text-gray-400 font-mono text-xs">{payment.id}</td>
                   <td className="px-6 py-4 text-gray-600">{payment.date}</td>
                   <td className="px-6 py-4 font-medium text-gray-900">{payment.memberName}</td>
@@ -85,9 +85,21 @@ const PaymentsList: React.FC = () => {
                     <Badge status={payment.status} />
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <button className="text-gray-400 hover:text-gray-600" title="View Receipt">
-                        <FileText className="w-4 h-4" />
-                    </button>
+                    <div className="flex items-center justify-end gap-1">
+                      <button className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-lg transition-all" title="View Receipt">
+                          <FileText className="w-4 h-4" />
+                      </button>
+                      <button 
+                          className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-lg transition-all" 
+                          title="Edit Payment"
+                          onClick={() => navigate(`/admin/payments/edit/${payment.id}`)}
+                      >
+                          <Edit2 className="w-4 h-4" />
+                      </button>
+                      <button className="p-2 text-gray-400 hover:text-danger hover:bg-red-50 rounded-lg transition-all" title="Delete Record">
+                          <Trash2 className="w-4 h-4" />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

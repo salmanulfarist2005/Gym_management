@@ -130,7 +130,11 @@ const AdminsList: React.FC = () => {
                   </td>
                   <td className="px-8 py-6 text-right">
                     <div className="flex items-center justify-end gap-2.5">
-                       <button className="p-2 text-gray-400 hover:text-primary hover:bg-white rounded-lg transition-all" title="Edit">
+                       <button 
+                        className="p-2 text-gray-400 hover:text-primary hover:bg-white rounded-lg transition-all" 
+                        title="Edit"
+                        onClick={() => navigate(`/superuser/admins/edit/${admin.id}`)}
+                       >
                         <Edit2 className="w-4 h-4" />
                       </button>
                       <button className="p-2 text-gray-400 hover:text-danger hover:bg-white rounded-lg transition-all" title="Delete">

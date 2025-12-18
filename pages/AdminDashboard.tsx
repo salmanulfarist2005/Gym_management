@@ -2,9 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Card, Badge, Button } from '../components/UI.tsx';
 import { MOCK_MEMBERS, REVENUE_DATA, MEMBER_STATUS_DATA } from '../constants.ts';
-import { Users, AlertCircle, CreditCard, UserPlus, Search, ArrowRight, ChevronRight } from 'lucide-react';
+import { Users, AlertCircle, CreditCard, UserPlus, Search, ArrowRight, Edit2, Trash2 } from 'lucide-react';
 import { 
-    LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend 
+    AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend 
 } from 'recharts';
 
 const AdminDashboard: React.FC = () => {
@@ -183,7 +183,7 @@ const AdminDashboard: React.FC = () => {
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                     {MOCK_MEMBERS.map((member) => (
-                        <tr key={member.id} className="hover:bg-gray-50 transition-colors">
+                        <tr key={member.id} className="hover:bg-gray-50 transition-colors group">
                             <td className="px-6 py-4">
                                 <div>
                                     <div className="font-bold text-gray-900 text-sm">{member.name}</div>
@@ -196,7 +196,18 @@ const AdminDashboard: React.FC = () => {
                                 <Badge status={member.status} />
                             </td>
                             <td className="px-6 py-4 text-right">
-                                <button className="text-primary hover:text-blue-700 font-black text-xs transition-colors">Edit</button>
+                                <div className="flex items-center justify-end gap-1 transition-opacity">
+                                    <button 
+                                        className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-lg transition-all" 
+                                        title="Edit"
+                                        onClick={() => navigate(`/admin/members/edit/${member.id}`)}
+                                    >
+                                        <Edit2 className="w-4 h-4" />
+                                    </button>
+                                    <button className="p-2 text-gray-400 hover:text-danger hover:bg-red-50 rounded-lg transition-all" title="Delete">
+                                        <Trash2 className="w-4 h-4" />
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     ))}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Search, MapPin, MoreVertical, Edit2, Trash2, Eye } from 'lucide-react';
+import { Plus, Search, MapPin, Edit2, Trash2, Eye } from 'lucide-react';
 import { Card, Badge, Button } from '../components/UI.tsx';
 import { MOCK_GYMS } from '../constants.ts';
 
@@ -73,12 +73,19 @@ const GymsList: React.FC = () => {
                     <Badge status={gym.status} />
                   </td>
                   <td className="px-6 py-4 text-right">
-                    <div className="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <button className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-full transition-colors" title="View Details">
+                    <div className="flex items-center justify-end gap-1">
+                       <button className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-lg transition-all" title="View">
                         <Eye className="w-4 h-4" />
                       </button>
-                       <button className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-full transition-colors" title="Edit">
+                      <button 
+                        className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-lg transition-all" 
+                        title="Edit"
+                        onClick={() => navigate(`/superuser/gyms/edit/${gym.id}`)}
+                      >
                         <Edit2 className="w-4 h-4" />
+                      </button>
+                      <button className="p-2 text-gray-400 hover:text-danger hover:bg-red-50 rounded-lg transition-all" title="Delete">
+                        <Trash2 className="w-4 h-4" />
                       </button>
                     </div>
                   </td>
