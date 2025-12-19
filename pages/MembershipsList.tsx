@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Plus, Filter, Edit2, Trash2, CreditCard } from 'lucide-react';
+import { Search, Plus, Filter, Edit2, Trash2, CalendarPlus, Eye } from 'lucide-react';
 import { Card, Badge, Button } from '../components/UI.tsx';
 import { MOCK_MEMBERSHIPS } from '../constants.ts';
 
@@ -74,7 +74,10 @@ const MembershipsList: React.FC = () => {
                   <td className="px-6 py-4 text-gray-600 text-xs font-mono">{sub.memberId}</td>
                   <td className="px-6 py-4 text-gray-600">{sub.startDate}</td>
                   <td className="px-6 py-4 text-gray-600">{sub.endDate}</td>
-                  <td className="px-6 py-4 text-blue-600 hover:underline cursor-pointer text-xs font-mono">
+                  <td 
+                    className="px-6 py-4 text-blue-600 hover:underline cursor-pointer text-xs font-mono"
+                    onClick={() => navigate(`/admin/payments/view/${sub.sourcePaymentId}`)}
+                  >
                       {sub.sourcePaymentId}
                   </td>
                   <td className="px-6 py-4">
@@ -82,6 +85,20 @@ const MembershipsList: React.FC = () => {
                   </td>
                   <td className="px-6 py-4 text-right">
                     <div className="flex items-center justify-end gap-1">
+                      <button 
+                        className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-lg transition-all" 
+                        title="View Details"
+                        onClick={() => navigate(`/admin/memberships/view/${sub.id}`)}
+                      >
+                        <Eye className="w-4 h-4" />
+                      </button>
+                      <button 
+                        className="p-2 text-primary hover:bg-blue-50 rounded-lg transition-all" 
+                        title="Extend Membership"
+                        onClick={() => navigate(`/admin/memberships/extend/${sub.id}`)}
+                      >
+                        <CalendarPlus className="w-4 h-4" />
+                      </button>
                       <button 
                         className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-lg transition-all" 
                         title="Edit Membership"

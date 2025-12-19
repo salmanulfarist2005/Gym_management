@@ -42,8 +42,8 @@ const Sidebar: React.FC<SidebarProps> = ({ role, onLogout, isOpen, toggleSidebar
         return [
           { to: '/admin', icon: LayoutDashboard, label: 'Dashboard' },
           { to: '/admin/members', icon: Users, label: 'Members' },
-          { to: '/admin/memberships', icon: IdCard, label: 'Memberships' },
           { to: '/admin/plans', icon: FileText, label: 'Plans' },
+          { to: '/admin/memberships', icon: IdCard, label: 'Memberships' },
           { to: '/admin/payments', icon: CreditCard, label: 'Payments' },
           { to: '/admin/attendance', icon: CalendarCheck, label: 'Attendance' },
           { to: '/admin/broadcasts', icon: Bell, label: 'Broadcasts' },

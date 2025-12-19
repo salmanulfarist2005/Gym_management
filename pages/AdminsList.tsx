@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Plus, Search, ShieldCheck, Edit2, Trash2, Mail, Phone, Building2, UserCircle } from 'lucide-react';
+import { Plus, Search, ShieldCheck, Edit2, Trash2, Mail, Phone, Building2, UserCircle, Eye } from 'lucide-react';
 import { Card, Badge, Button } from '../components/UI.tsx';
 import { MOCK_GYMS } from '../constants.ts';
 
@@ -130,6 +130,13 @@ const AdminsList: React.FC = () => {
                   </td>
                   <td className="px-8 py-6 text-right">
                     <div className="flex items-center justify-end gap-2.5">
+                       <button 
+                        className="p-2 text-gray-400 hover:text-primary hover:bg-white rounded-lg transition-all" 
+                        title="View Profile"
+                        onClick={() => navigate(`/superuser/admins/view/${admin.id}`)}
+                       >
+                        <Eye className="w-4 h-4" />
+                      </button>
                        <button 
                         className="p-2 text-gray-400 hover:text-primary hover:bg-white rounded-lg transition-all" 
                         title="Edit"

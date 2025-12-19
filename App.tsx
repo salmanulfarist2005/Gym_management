@@ -6,23 +6,30 @@ import SuperUserDashboard from './pages/SuperUserDashboard.tsx';
 import GymsList from './pages/GymsList.tsx';
 import CreateGym from './pages/CreateGym.tsx';
 import EditGym from './pages/EditGym.tsx';
+import ViewGym from './pages/ViewGym.tsx';
 import AdminsList from './pages/AdminsList.tsx';
 import CreateAdmin from './pages/CreateAdmin.tsx';
 import EditAdmin from './pages/EditAdmin.tsx';
+import ViewAdmin from './pages/ViewAdmin.tsx';
 import AdminDashboard from './pages/AdminDashboard.tsx';
 import MemberDashboard from './pages/MemberDashboard.tsx';
 import MembersList from './pages/MembersList.tsx';
 import AddMember from './pages/AddMember.tsx';
 import EditMember from './pages/EditMember.tsx';
+import ViewMember from './pages/ViewMember.tsx';
 import PlansList from './pages/PlansList.tsx';
 import AddPlan from './pages/AddPlan.tsx';
 import EditPlan from './pages/EditPlan.tsx';
+import ViewPlan from './pages/ViewPlan.tsx';
 import MembershipsList from './pages/MembershipsList.tsx';
 import AddMembership from './pages/AddMembership.tsx';
 import EditMembership from './pages/EditMembership.tsx';
+import ViewMembership from './pages/ViewMembership.tsx';
+import ExtendMembership from './pages/ExtendMembership.tsx';
 import PaymentsList from './pages/PaymentsList.tsx';
 import AddPayment from './pages/AddPayment.tsx';
 import EditPayment from './pages/EditPayment.tsx';
+import ViewPayment from './pages/ViewPayment.tsx';
 import { UserRole } from './types.ts';
 import { Menu, Construction } from 'lucide-react';
 
@@ -126,9 +133,11 @@ const App: React.FC = () => {
                     <Route path="/" element={<SuperUserDashboard />} />
                     <Route path="gyms" element={<GymsList />} />
                     <Route path="gyms/create" element={<CreateGym />} />
+                    <Route path="gyms/view/:id" element={<ViewGym />} />
                     <Route path="gyms/edit/:id" element={<EditGym />} />
                     <Route path="admins" element={<AdminsList />} />
                     <Route path="admins/create" element={<CreateAdmin />} />
+                    <Route path="admins/view/:id" element={<ViewAdmin />} />
                     <Route path="admins/edit/:id" element={<EditAdmin />} />
                     <Route path="reports" element={<PlaceholderPage title="System Reports" />} />
                     <Route path="settings" element={<PlaceholderPage title="System Settings" />} />
@@ -148,15 +157,20 @@ const App: React.FC = () => {
                     <Route path="/" element={<AdminDashboard />} />
                     <Route path="members" element={<MembersList />} />
                     <Route path="members/add" element={<AddMember />} />
+                    <Route path="members/view/:id" element={<ViewMember />} />
                     <Route path="members/edit/:id" element={<EditMember />} />
                     <Route path="memberships" element={<MembershipsList />} />
                     <Route path="memberships/add" element={<AddMembership />} />
+                    <Route path="memberships/view/:id" element={<ViewMembership />} />
                     <Route path="memberships/edit/:id" element={<EditMembership />} />
+                    <Route path="memberships/extend/:id" element={<ExtendMembership />} />
                     <Route path="plans" element={<PlansList />} />
                     <Route path="plans/add" element={<AddPlan />} />
+                    <Route path="plans/view/:id" element={<ViewPlan />} />
                     <Route path="plans/edit/:id" element={<EditPlan />} />
                     <Route path="payments" element={<PaymentsList />} />
                     <Route path="payments/add" element={<AddPayment />} />
+                    <Route path="payments/view/:id" element={<ViewPayment />} />
                     <Route path="payments/edit/:id" element={<EditPayment />} />
                     <Route path="attendance" element={<PlaceholderPage title="Attendance" />} />
                     <Route path="broadcasts" element={<PlaceholderPage title="Broadcasts" />} />

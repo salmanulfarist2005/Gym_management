@@ -74,7 +74,11 @@ const GymsList: React.FC = () => {
                   </td>
                   <td className="px-6 py-4 text-right">
                     <div className="flex items-center justify-end gap-1">
-                       <button className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-lg transition-all" title="View">
+                       <button 
+                        className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-lg transition-all" 
+                        title="View"
+                        onClick={() => navigate(`/superuser/gyms/view/${gym.id}`)}
+                       >
                         <Eye className="w-4 h-4" />
                       </button>
                       <button 

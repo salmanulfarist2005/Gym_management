@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Plus, Filter, Edit2, Trash2, FileText, Download } from 'lucide-react';
+import { Search, Plus, Filter, Edit2, Trash2, FileText, Download, Eye } from 'lucide-react';
 import { Card, Badge, Button } from '../components/UI.tsx';
 import { MOCK_PAYMENTS } from '../constants.ts';
 
@@ -86,7 +86,11 @@ const PaymentsList: React.FC = () => {
                   </td>
                   <td className="px-6 py-4 text-right">
                     <div className="flex items-center justify-end gap-1">
-                      <button className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-lg transition-all" title="View Receipt">
+                      <button 
+                        className="p-2 text-gray-400 hover:text-primary hover:bg-blue-50 rounded-lg transition-all" 
+                        title="View Receipt"
+                        onClick={() => navigate(`/admin/payments/view/${payment.id}`)}
+                      >
                           <FileText className="w-4 h-4" />
                       </button>
                       <button 
