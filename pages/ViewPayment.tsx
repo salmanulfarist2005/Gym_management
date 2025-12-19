@@ -13,7 +13,48 @@ const ViewPayment: React.FC = () => {
 
   return (
     <div className="space-y-6 max-w-3xl mx-auto">
-      <div className="flex justify-between items-center">
+      {/* CSS for specialized Print styling */}
+      <style>
+        {`
+          @media print {
+            /* Hide everything except the receipt card */
+            body * {
+              visibility: hidden;
+            }
+            .receipt-printable, .receipt-printable * {
+              visibility: visible;
+            }
+            .receipt-printable {
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+              margin: 0;
+              padding: 0;
+              box-shadow: none !important;
+              border: 1px solid #eee !important;
+            }
+            /* Force background colors to show in print */
+            .print-bg-dark {
+              background-color: #111827 !important;
+              color: white !important;
+              -webkit-print-color-adjust: exact;
+              print-color-adjust: exact;
+            }
+            .print-bg-primary {
+              background-color: #0052CC !important;
+              -webkit-print-color-adjust: exact;
+              print-color-adjust: exact;
+            }
+            /* Hide the back button and action bar */
+            .no-print {
+              display: none !important;
+            }
+          }
+        `}
+      </style>
+
+      <div className="flex justify-between items-center no-print">
         <div className="flex items-center gap-4">
             <button onClick={() => navigate('/admin/payments')} className="p-2 hover:bg-gray-100 rounded-full text-gray-600 transition-colors">
                 <ArrowLeft className="w-5 h-5" />
@@ -24,16 +65,28 @@ const ViewPayment: React.FC = () => {
             </div>
         </div>
         <div className="flex gap-2">
-            <Button variant="outline" className="text-xs px-3"><Printer className="w-4 h-4" /> Print</Button>
-            <Button variant="outline" className="text-xs px-3"><FileDown className="w-4 h-4" /> PDF</Button>
+            <Button 
+                variant="outline" 
+                className="text-xs px-3"
+                onClick={() => window.print()}
+            >
+                <Printer className="w-4 h-4" /> Print
+            </Button>
+            <Button 
+                variant="outline" 
+                className="text-xs px-3"
+                onClick={() => window.print()}
+            >
+                <FileDown className="w-4 h-4" /> PDF
+            </Button>
         </div>
       </div>
 
-      <Card className="p-0 overflow-hidden shadow-2xl border-none">
+      <Card className="p-0 overflow-hidden shadow-2xl border-none receipt-printable">
           {/* Receipt Header */}
-          <div className="bg-gray-900 text-white p-8 flex justify-between items-start">
+          <div className="bg-gray-900 text-white p-8 flex justify-between items-start print-bg-dark">
               <div className="flex items-center gap-3">
-                  <div className="p-2 bg-primary rounded-lg">
+                  <div className="p-2 bg-primary rounded-lg print-bg-primary">
                     <Building className="w-6 h-6" />
                   </div>
                   <div>
@@ -90,7 +143,7 @@ const ViewPayment: React.FC = () => {
                   <p className="text-[10px] text-gray-400 italic">Inclusive of all applicable taxes</p>
               </div>
 
-              <div className="pt-10 flex flex-col items-center justify-center text-center">
+              <div className="pt-10 flex flex-col items-center justify-center text-center no-print-section">
                   <div className="p-3 bg-green-50 text-success rounded-full mb-4">
                       <CheckCircle className="w-8 h-8" />
                   </div>
@@ -104,7 +157,7 @@ const ViewPayment: React.FC = () => {
           </div>
       </Card>
 
-      <div className="flex justify-end gap-3 pt-4">
+      <div className="flex justify-end gap-3 pt-4 no-print">
         <Button variant="outline" onClick={() => navigate(`/admin/payments/edit/${id}`)}>Edit Record</Button>
       </div>
     </div>
